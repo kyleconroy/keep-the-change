@@ -1,0 +1,6 @@
+github.com/google/go-querystring v1.0.0 h1:Xkwi/a1rcvNg1PPYe5vI8GbeBY/jrVuDX5ASuANWTrk=
+github.com/google/go-querystring v1.0.0/go.mod h1:odCYkC5MyYFN7vkCjXpyrEuKhc/BUO6wN/zVPAxq5ck=
+github.com/kyleconroy/bnkdev-go v0.1.0 h1:uj09eqTLXpu0XbjwNmT3yvC9Ep9hJxLxprctsqB+qpE=
+github.com/kyleconroy/bnkdev-go v0.1.0/go.mod h1:zhBRSHwxBy8HGkt/deqafxMfsWH2cfhOOpIp8pkQ93Y=
+github.com/kyleconroy/bnkdev-go v0.1.1-0.20200818185823-d603301025fb h1:5DFhqOhpn45SYpSjVxnWULJURE7606IMd7wGnpuS2so=
+github.com/kyleconroy/bnkdev-go v0.1.1-0.20200818185823-d603301025fb/go.mod h1:zhBRSHwxBy8HGkt/deqafxMfsWH2cfhOOpIp8pkQ93Y=
