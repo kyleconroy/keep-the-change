@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -10,8 +11,10 @@ import (
 	bnkdev "github.com/kyleconroy/bnkdev-go"
 )
 
+var realMode = flag.Bool("real", false, "create actual transfers")
+
 func main() {
-	// TODO: Add dryrun mode
+	flag.Parse()
 
 	checking := os.Getenv("BNKDEV_CHECKING_ACCOUNT")
 	savings := os.Getenv("BNKDEV_SAVINGS_ACCOUNT")
@@ -43,6 +46,7 @@ func main() {
 
 	for _, tx := range transactions.Data {
 		if _, found := seen[tx.ID]; found {
+			fmt.Printf("SKIP Already created transfer for %s\n", tx.ID)
 			continue
 		}
 		if tx.RouteID != cardRoute {
@@ -53,8 +57,13 @@ func main() {
 		}
 
 		change := 100 + (tx.Amount % 100)
-		fmt.Println(savings)
-		fmt.Println(change)
+
+		if !*realMode {
+			fmt.Printf("SKIP Transferring %d cents to %s\n", change, savings)
+			continue
+		} else {
+			fmt.Printf("Transferring %d cents to %s\n", change, savings)
+		}
 
 		// Create an account transfer
 		_, err := client.CreateAccountTransfer(ctx, &bnkdev.CreateAccountTransferRequest{
